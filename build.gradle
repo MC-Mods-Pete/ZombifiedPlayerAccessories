@@ -10,11 +10,6 @@ mod_id = project.mod_id
 loader_version = project.loader_version
 minecraft_version_range = project.minecraft_version_range
 java_version_range = project.java_version_range
-cloth_config_version = project.cloth_config_version
-modmenu_version = project.modmenu_version
-jade_version = project.jade_version
-contagion_version = project.contagion_version
-undeadnights_version = project.undeadnights_version
 cardinal_components_version = project.cardinal_components_version
 
 base {
@@ -73,28 +68,12 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
-	implementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-
-	api("me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}") {
-		exclude(group: "net.fabricmc.fabric-api")
-	}
-	include "me.shedaniel.cloth:cloth-config-fabric:${project.cloth_config_version}"
-
-	//other dependencies
-	implementation "curse.maven:jade-324717:${project.jade_version}"
-	implementation "curse.maven:contagion-1027702:${project.contagion_version}"
-	implementation "curse.maven:undeadnights-1166914:${project.undeadnights_version}"
 
     // Trinkets and Cardinal Components API (uncomment if you use them), make sure to set the version in gradle.properties
 	//implementation "maven.modrinth:trinkets-continued:${project.trinkets_continued_version}"
 	implementation "eu.pb4:trinkets:${project.trinkets_version}"
     implementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${cardinal_components_version}"
     implementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${cardinal_components_version}"
-
-	// Both gravestone mods are available for compilation (for their respective util classes)
-	compileOnly "maven.modrinth:pneumono_gravestones:${project.pneumono_gravestones_version}"
-	compileOnly "curse.maven:universal-graves-497175:${project.universal_graves_version}"
-	compileOnly "curse.maven:hardcore-revival-274036:${project.hardcore_revival_version}"
 }
 
 processResources {
@@ -104,18 +83,10 @@ processResources {
 	inputs.property "loader_version", loader_version
 	inputs.property "minecraft_version_range", minecraft_version_range
 	inputs.property "java_version_range", java_version_range
-	inputs.property "cloth_config_version", cloth_config_version
-	inputs.property "modmenu_version", modmenu_version
-	inputs.property "jade_version", jade_version
-	inputs.property "contagion_version", contagion_version
-	inputs.property "undeadnights_version", undeadnights_version
 
 	filesMatching("fabric.mod.json") {
 		expand "version": version, "mod_id": mod_id, "mod_name": mod_name, "loader_version": loader_version,
-				"minecraft_version_range": minecraft_version_range, "java_version_range": java_version_range,
-				"cloth_config_version" : cloth_config_version, "modmenu_version": modmenu_version,
-				"jade_version": jade_version, "contagion_version": contagion_version,
-				"undeadnights_version": undeadnights_version
+				"minecraft_version_range": minecraft_version_range, "java_version_range": java_version_range
 	}
 }
 
@@ -131,12 +102,6 @@ java {
 
 	sourceCompatibility = JavaVersion.VERSION_25
 	targetCompatibility = JavaVersion.VERSION_25
-}
-
-jar {
-	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
-	}
 }
 
 // configure the maven publication

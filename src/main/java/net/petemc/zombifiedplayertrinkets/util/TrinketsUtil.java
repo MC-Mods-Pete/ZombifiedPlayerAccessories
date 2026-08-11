@@ -1,4 +1,4 @@
-package net.petemc.zombifiedplayer.util;
+package net.petemc.zombifiedplayertrinkets.util;
 
 import eu.pb4.trinkets.api.TrinketAttachment;
 import eu.pb4.trinkets.api.TrinketSlotAccess;
@@ -12,7 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
-import net.petemc.zombifiedplayer.ZombifiedPlayer;
+import net.petemc.zombifiedplayertrinkets.ZombifiedPlayerTrinkets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,16 +50,16 @@ public class TrinketsUtil {
                 ItemStack stack = pair.getB();
                 if (!stack.isEmpty()) {
                     trinketsItems.add(stack.copy());
-                    ZombifiedPlayer.LOGGER.info("Found " + stack + " in trinkets, adding to list and clearing slot.");
+                    ZombifiedPlayerTrinkets.LOGGER.info("Found " + stack + " in trinkets, adding to list and clearing slot.");
                     pair.getB().setCount(0);
                 }
             }
         } catch (Exception e) {
-            ZombifiedPlayer.LOGGER.error("Error accessing Trinkets API during retrieval", e);
+            ZombifiedPlayerTrinkets.LOGGER.error("Error accessing Trinkets API during retrieval", e);
         }
 
         if (!trinketsItems.isEmpty()) {
-            ZombifiedPlayer.LOGGER.info("Trinkets items list is not empty, returning list with " + trinketsItems.size() + " items.");
+            ZombifiedPlayerTrinkets.LOGGER.info("Trinkets items list is not empty, returning list with " + trinketsItems.size() + " items.");
         }
 
         return trinketsItems;
@@ -83,12 +83,12 @@ public class TrinketsUtil {
             if (attachment != null) {
                 boolean flag = attachment.isEquipped(itemToCheck.getItem());
                 if (flag) {
-                    ZombifiedPlayer.LOGGER.info("Found " + itemToCheck + " in trinkets!");
+                    ZombifiedPlayerTrinkets.LOGGER.info("Found " + itemToCheck + " in trinkets!");
                 }
                 return flag;
             }
         } catch (Exception e) {
-            ZombifiedPlayer.LOGGER.error("Error accessing Trinkets API during item check", e);
+            ZombifiedPlayerTrinkets.LOGGER.error("Error accessing Trinkets API during item check", e);
         }
 
         return false;
@@ -107,6 +107,10 @@ public class TrinketsUtil {
                 .orElse(false);
     }
 
+    public static void saveTrinketItems(List<ItemStack> curiosItems) {
+        ZombifiedPlayerTrinkets.LOGGER.info("You using the wrong version of this mod.");
+    }
+
     public static void saveTrinketItems(ValueOutput.TypedOutputList<ItemStackWithSlot> list, List<ItemStack> curiosItems) {
         for (int i = 0; i < curiosItems.size(); ++i) {
             ItemStack itemstack = curiosItems.get(i);
@@ -114,6 +118,10 @@ public class TrinketsUtil {
                 list.add(new ItemStackWithSlot(i, itemstack));
             }
         }
+    }
+
+    public static void loadTrinketItems(List<ItemStack> curiosItems) {
+        ZombifiedPlayerTrinkets.LOGGER.info("You using the wrong version of this mod.");
     }
 
     public static void loadTrinketItems(ValueInput.TypedInputList<ItemStackWithSlot> list, List<ItemStack> curiosItems) {

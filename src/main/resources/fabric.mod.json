@@ -3,12 +3,12 @@
 	"id": "${mod_id}",
 	"version": "${version}",
 	"name": "${mod_name}",
-	"description": "A Zombified Player gets spawned after the player dies.",
+	"description": "This mod adds compatibility to the Trinkets API for the Zombified Player mod.",
 	"authors": [
 		"Pete MC Mods, mcmods.pete@gmail.com"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/zombified-player",
+		"homepage": "https://modrinth.com/mod/zombified-player-trinkets",
 		"sources": "https://github.com/MC-Mods-Pete/ZombifiedPlayer",
 		"issues": "https://github.com/MC-Mods-Pete/ZombifiedPlayer/issues"
 	},
@@ -17,30 +17,16 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.petemc.zombifiedplayer.ZombifiedPlayer"
-		],
-		"client": [
-			"net.petemc.zombifiedplayer.ZombifiedPlayerClient"
-		],
-		"fabric-datagen": [
-			"net.petemc.zombifiedplayer.ZombifiedPlayerDataGenerator"
-		],
-		"modmenu": [
-			"net.petemc.zombifiedplayer.util.ModMenuIntegration"
+			"net.petemc.zombifiedplayertrinkets.ZombifiedPlayerTrinkets"
 		]
 	},
-	"mixins": [
-		"zombifiedplayer.mixins.json"
-	],
 	"depends": {
 		"fabricloader": ">=${loader_version}",
 		"minecraft": "${minecraft_version_range}",
 		"java": "${java_version_range}",
-		"fabric-api": "*",
-		"cloth-config": ">=${cloth_config_version}"
+		"fabric-api": "*"
 	},
 	"suggests": {
-		"modmenu": ">=${modmenu_version}",
 		"another-mod": "*"
 	}
 }
