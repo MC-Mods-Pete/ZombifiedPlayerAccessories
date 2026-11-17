@@ -3,21 +3,21 @@
 	"id": "${mod_id}",
 	"version": "${version}",
 	"name": "${mod_name}",
-	"description": "This mod adds compatibility to the Trinkets API for the Zombified Player mod.",
+	"description": "This mod adds compatibility to the Accessories API for the Zombified Player mod.",
 	"authors": [
 		"Pete MC Mods, mcmods.pete@gmail.com"
 	],
 	"contact": {
-		"homepage": "https://modrinth.com/mod/zombified-player-trinkets",
+		"homepage": "https://modrinth.com/mod/zombified-player-accessories",
 		"sources": "https://github.com/MC-Mods-Pete/ZombifiedPlayer",
 		"issues": "https://github.com/MC-Mods-Pete/ZombifiedPlayer/issues"
 	},
 	"license": "MIT",
-	"icon": "zombifiedplayer.png",
+	"icon": "zombifiedplayeraccessories.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.petemc.zombifiedplayertrinkets.ZombifiedPlayerTrinkets"
+			"net.petemc.zombifiedplayeraccessories.ZombifiedPlayerAccessories"
 		]
 	},
 	"depends": {

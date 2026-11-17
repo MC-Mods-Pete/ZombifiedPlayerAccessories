@@ -10,7 +10,7 @@ mod_id = project.mod_id
 loader_version = project.loader_version
 minecraft_version_range = project.minecraft_version_range
 java_version_range = project.java_version_range
-cardinal_components_version = project.cardinal_components_version
+//cardinal_components_version = project.cardinal_components_version
 
 base {
 	archivesName = project.archives_base_name
@@ -71,9 +71,10 @@ dependencies {
 
     // Trinkets and Cardinal Components API (uncomment if you use them), make sure to set the version in gradle.properties
 	//implementation "maven.modrinth:trinkets-continued:${project.trinkets_continued_version}"
-	implementation "eu.pb4:trinkets:${project.trinkets_version}"
-    implementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${cardinal_components_version}"
-    implementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${cardinal_components_version}"
+	//implementation "eu.pb4:trinkets:${project.trinkets_version}"
+    //implementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${cardinal_components_version}"
+    //implementation "org.ladysnake.cardinal-components-api:cardinal-components-entity:${cardinal_components_version}"
+	compileOnly "curse.maven:accessories-938917:${project.accessories_version}"
 }
 
 processResources {
